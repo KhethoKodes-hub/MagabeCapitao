@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact · Magabe Capitao Enterprise</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #fdf7f0;
+      --beige: #e8d5bf;
+      --brown: #7c4f2a;
+      --brown-light: #b07848;
+      --orange-dark: #c45b1a;
+      --orange-mid: #d97c3a;
+      --sand: #f2e4d0;
+      --charcoal: #1e1410;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+    h1,h2,h3,h4,.serif { font-family: 'Playfair Display', serif; }
+
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(253,247,240,0.75);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(160,100,50,0.18);
+      transition: all 0.3s;
+    }
+    nav.scrolled { background: rgba(253,247,240,0.97); box-shadow: 0 8px 40px -12px rgba(124,79,42,0.22); }
+
+    .contact-hero {
+      min-height: 65vh;
+      background:
+        linear-gradient(155deg, rgba(16,9,4,0.80) 0%, rgba(80,42,12,0.65) 45%, rgba(196,91,26,0.5) 100%),
+        url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=85') center/cover no-repeat;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      position: relative; overflow: hidden; padding-top: 5rem;
+    }
+    .contact-hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 160px;
+      background: linear-gradient(to top, var(--cream), transparent);
+    }
+
+    .glass {
+      background: rgba(255,248,235,0.16);
+      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      border: 1px solid rgba(255,220,170,0.28);
+      box-shadow: 0 8px 32px rgba(124,79,42,0.18), inset 0 1px 0 rgba(255,255,255,0.25);
+      border-radius: 20px;
+      transition: all 0.35s cubic-bezier(.22,.68,0,1.2);
+    }
+    .glass:hover {
+      background: rgba(255,248,235,0.26);
+      border-color: rgba(196,91,26,0.42);
+      transform: translateY(-5px);
+    }
+
+    .card {
+      background: rgba(255,251,244,0.85);
+      border: 1px solid rgba(176,120,72,0.2);
+      border-radius: 20px;
+      transition: all 0.35s cubic-bezier(.22,.68,0,1.2);
+      box-shadow: 0 4px 24px rgba(124,79,42,0.07);
+    }
+    .card:hover {
+      background: #fffdf8;
+      border-color: rgba(196,91,26,0.3);
+      box-shadow: 0 22px 50px rgba(124,79,42,0.18);
+      transform: translateY(-5px);
+    }
+
+    .method-card {
+      background: linear-gradient(135deg, rgba(255,251,244,0.9), rgba(242,228,208,0.75));
+      border: 1px solid rgba(176,120,72,0.18);
+      border-radius: 20px; padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: all 0.38s cubic-bezier(.22,.68,0,1.2);
+    }
+    .method-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--orange-dark), var(--orange-mid), var(--brown-light));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.38s ease;
+    }
+    .method-card:hover { transform: translateY(-7px); box-shadow: 0 24px 50px rgba(124,79,42,0.2); border-color: rgba(196,91,26,0.32); }
+    .method-card:hover::before { transform: scaleX(1); }
+
+    .method-icon {
+      width: 60px; height: 60px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, rgba(196,91,26,0.1), rgba(124,79,42,0.08));
+      border: 1px solid rgba(196,91,26,0.2);
+      margin-bottom: 1.2rem;
+      transition: all 0.35s;
+    }
+    .method-card:hover .method-icon {
+      background: linear-gradient(135deg, #c45b1a, #7c4f2a);
+      border-color: transparent;
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(255,250,242,0.7);
+      border: 1.5px solid rgba(176,120,72,0.28);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: #2f1d0e;
+      transition: all 0.25s;
+      outline: none;
+    }
+    .form-input::placeholder { color: rgba(124,79,42,0.45); }
+    .form-input:hover { border-color: rgba(176,120,72,0.5); background: rgba(255,252,246,0.9); }
+    .form-input:focus {
+      border-color: #c45b1a;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(196,91,26,0.1);
+    }
+    .form-label {
+      display: block; font-size: 0.82rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      color: #7c4f2a; margin-bottom: 0.5rem;
+    }
+
+    .service-chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(255,248,235,0.8);
+      border: 1.5px solid rgba(176,120,72,0.22);
+      border-radius: 100px; padding: 0.4rem 1rem;
+      font-size: 0.82rem; font-weight: 500; color: #4a3220;
+      cursor: pointer; transition: all 0.2s; user-select: none;
+    }
+    .service-chip:hover { border-color: rgba(196,91,26,0.4); background: #fff8ed; }
+    .service-chip.active {
+      background: linear-gradient(135deg, #c45b1a, #d97c3a);
+      border-color: transparent; color: white;
+      box-shadow: 0 4px 14px rgba(196,91,26,0.4);
+    }
+
+    .btn-submit {
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      background: linear-gradient(135deg, #c45b1a, #d97c3a);
+      color: white; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 1rem;
+      padding: 1rem 2rem; border-radius: 14px;
+      border: none; cursor: pointer; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(196,91,26,0.4);
+      transition: all 0.3s;
+    }
+    .btn-submit:hover { box-shadow: 0 14px 38px rgba(196,91,26,0.58); transform: translateY(-2px); }
+    .btn-submit:active { transform: translateY(0); }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg,#c45b1a,#d97c3a);
+      color: white; font-family: 'DM Sans',sans-serif; font-weight: 600;
+      padding: 0.85rem 2rem; border-radius: 100px;
+      border: none; cursor: pointer; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(196,91,26,0.4); transition: all 0.3s;
+    }
+    .btn-primary:hover { box-shadow: 0 14px 38px rgba(196,91,26,0.58); transform: translateY(-2px) scale(1.03); }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: white;
+      font-family: 'DM Sans',sans-serif; font-weight: 600;
+      padding: 0.85rem 2rem; border-radius: 100px;
+      border: 1.5px solid rgba(255,230,180,0.5); text-decoration: none; transition: all 0.3s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,200,100,0.75); }
+
+    .gline { height: 2px; background: linear-gradient(90deg,transparent,var(--orange-dark),var(--brown-light),transparent); opacity: 0.4; }
+
+    .logo-mark {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: linear-gradient(135deg,#c45b1a,#7c4f2a);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display',serif; font-weight: 700;
+      color: white; font-size: 1.1rem; box-shadow: 0 4px 16px rgba(196,91,26,0.4);
+    }
+
+    .fade-up { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+
+    .noise { position: relative; }
+    .noise::before {
+      content:''; position:absolute; inset:0; pointer-events:none; border-radius:inherit;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    }
+
+    #mobile-menu { display:none; background:rgba(253,247,240,0.97); backdrop-filter:blur(20px); border-top:1px solid rgba(180,120,72,0.2); }
+    #mobile-menu.open { display:block; }
+
+    .breadcrumb-pill {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      background:rgba(255,255,255,0.13); border:1px solid rgba(255,220,160,0.28);
+      backdrop-filter:blur(10px); border-radius:100px;
+      padding:0.4rem 1.1rem; color:rgba(255,240,210,0.85);
+      font-size:0.75rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase;
+    }
+
+    .hours-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(176,120,72,0.12);
+      transition: all 0.2s;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row:hover { padding-left: 6px; }
+
+    .success-box {
+      display: none;
+      background: linear-gradient(135deg, rgba(196,91,26,0.08), rgba(124,79,42,0.06));
+      border: 1.5px solid rgba(196,91,26,0.3);
+      border-radius: 14px; padding: 1.5rem; text-align: center;
+      animation: popIn 0.4s cubic-bezier(.22,.68,0,1.2);
+    }
+    @keyframes popIn { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+
+    .pulse-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.4);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      background: linear-gradient(135deg,#f0b060,#e07030);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3" style="text-decoration:none;">
+      <div class="logo-mark">MC</div>
+      <div>
+        <div class="font-bold text-sm md:text-base" style="font-family:'Playfair Display',serif; color:#2f1d0e; letter-spacing:0.04em;">MAGABE CAPITAO</div>
+        <div class="text-xs uppercase tracking-widest" style="color:#b07848; letter-spacing:0.12em;">Enterprise (PTY) Ltd</div>
+      </div>
+    </a>
+
+    <div class="hidden md:flex items-center gap-7">
+      <a href="index.html" class="text-sm font-medium text-stone-500 hover:text-orange-700 transition-colors">Home</a>
+            <a href="about.html" class="text-sm font-medium text-stone-500 hover:text-orange-700 transition-colors">About</a>
+
+      <a href="services.html" class="text-sm font-medium text-stone-500 hover:text-orange-700 transition-colors">Services</a>
+      <span class="text-sm font-semibold" style="color:#c45b1a; border-bottom:2px solid #c45b1a; padding-bottom:2px;">Contact</span>
+      <a href="tel:0723302658" class="btn-primary text-sm px-5 py-2">📞 Call Now</a>
+    </div>
+
+    <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+      <span class="block w-6 h-0.5 bg-stone-700"></span>
+      <span class="block w-6 h-0.5 bg-stone-700"></span>
+      <span class="block w-4 h-0.5 bg-stone-700"></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden px-5 pb-5 pt-2 space-y-3">
+    <a href="index.html" class="block text-base font-medium text-stone-700 py-2 border-b border-stone-200">Home</a>
+        <a href="about.html" class="block text-base font-medium text-stone-700 py-2 border-b border-stone-200" onclick="closeMenu()">About</a>
+
+    <a href="services.html" class="block text-base font-medium text-stone-700 py-2 border-b border-stone-200" onclick="closeMenu()">Services</a>
+    <span class="block text-base font-semibold py-2 border-b border-stone-200" style="color:#c45b1a;">Contact</span>
+    <a href="tel:0723302658" class="btn-primary text-sm justify-center mt-2">📞 0723 302 658</a>
+  </div>
+</nav>
+
+
+<section class="contact-hero noise" id="top">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 pb-20 md:pb-28 relative z-10">
+
+    <div class="breadcrumb-pill mb-6">
+      <a href="index.html" style="color:inherit;text-decoration:none;">Home</a>
+      <span style="opacity:0.5;">›</span>
+      <span>Contact</span>
+    </div>
+
+    <h1 class="text-white mb-5 leading-tight" style="font-size:clamp(2.4rem,6vw,5rem); font-family:'Playfair Display',serif; text-shadow:0 4px 30px rgba(0,0,0,0.3); max-width:800px;">
+      <em style="color:#f0a050;">Call, Email</em> or<br>Stop by — We're Here<br>in Gamagara.
+    </h1>
+    <p class="mb-8 max-w-xl" style="color:rgba(255,235,200,0.85); font-size:1.1rem; line-height:1.75; font-weight:300;">
+      Whether you need a quote, a quick question, or just want to talk about your next project — our line is always open.
+    </p>
+
+    <div class="flex flex-wrap gap-4">
+      <a href="tel:0723302658" class="glass px-6 py-4 flex items-center gap-3" style="text-decoration:none;">
+        <span style="font-size:1.4rem;">📞</span>
+        <div>
+          <div class="font-bold text-white" style="font-family:'Playfair Display',serif; font-size:1rem;">0723 302 658</div>
+          <div class="text-xs uppercase tracking-widest" style="color:rgba(255,215,150,0.75);">Call or WhatsApp</div>
+        </div>
+      </a>
+      <a href="mailto:tuduetsoletsoalo05@gmail.com" class="glass px-6 py-4 flex items-center gap-3" style="text-decoration:none;">
+        <span style="font-size:1.4rem;">✉️</span>
+        <div>
+          <div class="font-bold text-white" style="font-family:'Playfair Display',serif; font-size:0.95rem;">tuduetsoletsoalo05@gmail.com</div>
+          <div class="text-xs uppercase tracking-widest" style="color:rgba(255,215,150,0.75);">24h Reply</div>
+        </div>
+      </a>
+      <div class="glass px-6 py-4 flex items-center gap-3">
+        <span style="font-size:1.4rem;">📍</span>
+        <div>
+          <div class="font-bold text-white" style="font-family:'Playfair Display',serif; font-size:1rem;">Gamagara District</div>
+          <div class="text-xs uppercase tracking-widest" style="color:rgba(255,215,150,0.75);">Northern Cape</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20" style="background:linear-gradient(160deg,#fdf7f0 0%,#f4e9d8 100%);">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <span class="text-xs font-semibold uppercase tracking-widest block mb-3" style="color:#c45b1a;">📲 Ways to Reach Us</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem); color:#2f1d0e; font-family:'Playfair Display',serif;">Always <em>Available</em> for You</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-16">
+      <a href="tel:0723302658" class="method-card" style="text-decoration:none;">
+        <div class="method-icon">📞</div>
+        <h3 class="font-bold text-lg mb-1" style="font-family:'Playfair Display',serif; color:#2f1d0e;">Call or WhatsApp</h3>
+        <p class="text-2xl font-light mb-2" style="color:#c45b1a; font-family:'Playfair Display',serif;">0723 302 658</p>
+        <p class="text-sm leading-relaxed" style="color:#6b4c30;">Call us directly for fast quotes, urgent work, or to chat about your project. We pick up.</p>
+        <div class="mt-4 flex items-center gap-2">
+          <div class="pulse-dot"></div>
+          <span class="text-xs font-medium" style="color:#22c55e;">Available now</span>
+        </div>
+      </a>
+
+      <a href="mailto:tuduetsoletsoalo05@gmail.com" class="method-card" style="text-decoration:none;">
+        <div class="method-icon">✉️</div>
+        <h3 class="font-bold text-lg mb-1" style="font-family:'Playfair Display',serif; color:#2f1d0e;">Send an Email</h3>
+        <p class="text-sm font-medium mb-2" style="color:#c45b1a; word-break:break-all;">tuduetsoletsoalo05@gmail.com</p>
+        <p class="text-sm leading-relaxed" style="color:#6b4c30;">Send us your project details, photos, or questions. We reply within 24 hours — usually much faster.</p>
+        <div class="mt-4 text-xs font-medium" style="color:#b07848;">⏱ 24h response time</div>
+      </a>
+
+      <div class="method-card">
+        <div class="method-icon">📍</div>
+        <h3 class="font-bold text-lg mb-1" style="font-family:'Playfair Display',serif; color:#2f1d0e;">Our Location</h3>
+        <p class="text-base font-medium mb-2" style="color:#c45b1a;">Gamagara District, NC</p>
+        <p class="text-sm leading-relaxed" style="color:#6b4c30;">We're based in the heart of Gamagara and travel to your site — no project too remote. Free site visits for all quotes.</p>
+        <div class="mt-4 text-xs font-medium" style="color:#b07848;">🚗 We come to you</div>
+      </div>
+    </div>
+
+
+    <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+      <div class="flex-1 card p-8 fade-up">
+        <div class="mb-7">
+          <span class="text-xs font-semibold uppercase tracking-widest block mb-2" style="color:#c45b1a;">✍️ Send a Message</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); color:#2f1d0e; font-family:'Playfair Display',serif;">Tell Us About<br><em>Your Project</em></h2>
+          <div class="gline mt-4" style="width:60px;"></div>
+        </div>
+
+        <div class="mb-6">
+          <label class="form-label">What service are you interested in?</label>
+          <div class="flex flex-wrap gap-2 mt-2" id="chip-group">
+            <span class="service-chip" onclick="toggleChip(this)">🛣️ Roads</span>
+            <span class="service-chip" onclick="toggleChip(this)">🔨 Renovation</span>
+            <span class="service-chip" onclick="toggleChip(this)">⛲ Fences</span>
+            <span class="service-chip" onclick="toggleChip(this)">🧱 Plastering</span>
+            <span class="service-chip" onclick="toggleChip(this)">🍽️ Catering</span>
+            <span class="service-chip" onclick="toggleChip(this)">🧼 Cleaning</span>
+          </div>
+        </div>
+
+        <form id="contact-form" onsubmit="handleSubmit(event)" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label">Your Name</label>
+              <input type="text" class="form-input" placeholder="e.g. Thabo Ndlovu" required />
+            </div>
+            <div>
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" placeholder="072 330 2658" />
+            </div>
+          </div>
+
+          <div>
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="name@example.com" required />
+          </div>
+
+          <div>
+            <label class="form-label">Project Details</label>
+            <textarea class="form-input" rows="5" placeholder="Describe your project — location, size, timeline, or any questions. We read every message." style="resize:vertical;" required></textarea>
+          </div>
+
+          <div class="flex items-center gap-3 p-4 rounded-14 cursor-pointer" style="background:rgba(196,91,26,0.06); border:1.5px solid rgba(196,91,26,0.15); border-radius:12px;" id="urgent-toggle" onclick="toggleUrgent()">
+            <div style="width:20px;height:20px;border-radius:50%;border:2px solid #c45b1a;display:flex;align-items:center;justify-content:center;flex-shrink:0;" id="urgent-dot"></div>
+            <div>
+              <div class="text-sm font-semibold" style="color:#4a3220;">⚡ This is urgent / emergency work</div>
+              <div class="text-xs" style="color:#9a6540;">We'll prioritise your message and call back same day</div>
+            </div>
+          </div>
+
+          <div id="success-box" class="success-box">
+            <span style="font-size:2.5rem; display:block; margin-bottom:0.7rem;">🎉</span>
+            <h3 class="font-bold text-lg mb-1" style="font-family:'Playfair Display',serif; color:#2f1d0e;">Message Received!</h3>
+            <p class="text-sm" style="color:#6b4c30;">We'll get back to you shortly. For urgent matters, call <strong style="color:#c45b1a;">0723 302 658</strong> directly.</p>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submit-btn">
+            <span id="btn-text">✉️ Send Message</span>
+          </button>
+        </form>
+
+        <p class="text-xs mt-4 text-center" style="color:#b07848;">Or email us directly: <a href="mailto:tuduetsoletsoalo05@gmail.com" style="color:#c45b1a; font-weight:500;">tuduetsoletsoalo05@gmail.com</a></p>
+      </div>
+
+      <div class="flex-none w-full lg:w-80 space-y-5 fade-up delay-3">
+
+        <div class="card p-6">
+          <h3 class="font-bold text-base mb-4" style="font-family:'Playfair Display',serif; color:#2f1d0e;">🕒 Business Hours</h3>
+          <div class="space-y-0">
+            <div class="hours-row">
+              <span class="text-sm font-medium" style="color:#2f1d0e;">Monday – Friday</span>
+              <span class="text-sm font-semibold" style="color:#c45b1a;">07:30 – 17:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="text-sm font-medium" style="color:#2f1d0e;">Saturday</span>
+              <span class="text-sm" style="color:#7a5438;">By appointment</span>
+            </div>
+            <div class="hours-row">
+              <span class="text-sm font-medium" style="color:#2f1d0e;">Sunday</span>
+              <span class="text-sm" style="color:#aaa;">Closed</span>
+            </div>
+          </div>
+          <div class="mt-4 p-3 rounded-12 flex items-center gap-2" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:10px;">
+            <div class="pulse-dot"></div>
+            <span class="text-xs font-medium" style="color:#166534;">Emergency calls accepted anytime</span>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="font-bold text-base mb-4" style="font-family:'Playfair Display',serif; color:#2f1d0e;">📍 Our Base</h3>
+          <div style="border-radius:14px;overflow:hidden;border:1.5px solid rgba(176,120,72,0.22);margin-bottom:1rem;">
+            <div style="height:160px;background:linear-gradient(145deg,#1e1410,#7c4f2a,#c45b1a);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+              <div style="position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=600&q=60') center/cover;opacity:0.25;"></div>
+              <div class="text-center relative z-10">
+                <span style="font-size:2.5rem;">📍</span>
+                <div class="text-white font-bold mt-1" style="font-family:'Playfair Display',serif; font-size:1rem;">Gamagara District</div>
+                <div style="font-size:0.7rem;color:rgba(255,220,150,0.8);text-transform:uppercase;letter-spacing:0.1em;">Northern Cape, SA</div>
+              </div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed" style="color:#6b4c30;">Based in Gamagara, we serve all surrounding areas in the Northern Cape. We come to your site — coordinates on request.</p>
+        </div>
+
+        <div style="background:linear-gradient(135deg,#c45b1a,#7c4f2a); border-radius:20px; padding:1.8rem; position:relative; overflow:hidden;">
+          <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,200,100,0.1);"></div>
+          <h3 class="font-bold text-lg text-white mb-1 relative z-10" style="font-family:'Playfair Display',serif;">Need it Fast?</h3>
+          <p class="text-sm mb-4 relative z-10" style="color:rgba(255,230,190,0.82);">Call us directly for same-day responses on urgent projects.</p>
+          <a href="tel:0723302658" class="relative z-10" style="display:flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:100px;padding:0.7rem 1.2rem;text-decoration:none;color:white;font-weight:600;font-size:0.9rem;transition:all 0.2s;backdrop-filter:blur(8px);" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+            📞 0723 302 658
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20" style="background:linear-gradient(160deg,#f2e4d0,#fdf7f0);">
+  <div class="max-w-4xl mx-auto px-5 md:px-8">
+    <div class="text-center mb-12 fade-up">
+      <span class="text-xs font-semibold uppercase tracking-widest block mb-3" style="color:#c45b1a;">❓ Quick Answers</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem); color:#2f1d0e; font-family:'Playfair Display',serif;">Common <em>Questions</em></h2>
+    </div>
+
+    <div class="space-y-4 fade-up delay-2" id="faq-list">
+
+      <div class="card overflow-hidden">
+        <button class="faq-btn w-full text-left p-5 flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+          <span class="font-semibold text-base" style="color:#2f1d0e;">Do you provide free quotes?</span>
+          <span class="faq-arrow text-xl flex-shrink-0" style="color:#c45b1a; transition:transform 0.3s;">+</span>
+        </button>
+        <div class="faq-body" style="display:none; padding:0 1.25rem 1.25rem; color:#6b4c30; font-size:0.92rem; line-height:1.7;">
+          Yes — all site visits and quotations are completely free with no obligation. We come to you, assess the project, and provide a clear, itemised quote.
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+        <button class="faq-btn w-full text-left p-5 flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+          <span class="font-semibold text-base" style="color:#2f1d0e;">How quickly can you start a project?</span>
+          <span class="faq-arrow text-xl flex-shrink-0" style="color:#c45b1a; transition:transform 0.3s;">+</span>
+        </button>
+        <div class="faq-body" style="display:none; padding:0 1.25rem 1.25rem; color:#6b4c30; font-size:0.92rem; line-height:1.7;">
+          It depends on scope and schedule, but we pride ourselves on fast mobilisation. For emergency maintenance, we respond the same day. For new builds, we'll give you a realistic start date at quotation.
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+        <button class="faq-btn w-full text-left p-5 flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+          <span class="font-semibold text-base" style="color:#2f1d0e;">Do you offer construction AND catering for the same event or site?</span>
+          <span class="faq-arrow text-xl flex-shrink-0" style="color:#c45b1a; transition:transform 0.3s;">+</span>
+        </button>
+        <div class="faq-body" style="display:none; padding:0 1.25rem 1.25rem; color:#6b4c30; font-size:0.92rem; line-height:1.7;">
+          Absolutely. Our construction + catering combo is popular for site crews and community projects. One company, one invoice, zero hassle.
+        </div>
+      </div>
+
+      <div class="card overflow-hidden">
+        <button class="faq-btn w-full text-left p-5 flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+          <span class="font-semibold text-base" style="color:#2f1d0e;">How far outside Gamagara do you work?</span>
+          <span class="faq-arrow text-xl flex-shrink-0" style="color:#c45b1a; transition:transform 0.3s;">+</span>
+        </button>
+        <div class="faq-body" style="display:none; padding:0 1.25rem 1.25rem; color:#6b4c30; font-size:0.92rem; line-height:1.7;">
+          We travel throughout the Northern Cape and surrounding regions. No project is too remote — just tell us your location and we'll make a plan.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="py-20 noise" style="background:linear-gradient(135deg,#2f1d0e 0%,#7c4f2a 50%,#c45b1a 100%); position:relative; overflow:hidden;">
+  <div style="position:absolute;top:-60px;left:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,200,100,0.06);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-80px;right:-40px;width:260px;height:260px;border-radius:50%;background:rgba(255,200,100,0.05);pointer-events:none;"></div>
+
+  <div class="max-w-3xl mx-auto px-5 md:px-8 text-center relative z-10 fade-up">
+    <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">📞</span>
+    <h2 class="text-white mb-4" style="font-size:clamp(1.8rem,4vw,2.8rem); font-family:'Playfair Display',serif;">
+      One Call Away<br>from <em>Getting Started.</em>
+    </h2>
+    <p class="mb-8 text-lg" style="color:rgba(255,230,190,0.82); line-height:1.7; font-weight:300;">
+      No pressure, no obligations. Just tell us your vision and we'll handle the rest — with the care and trust Gamagara knows us for.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:0723302658" class="btn-primary text-base px-8 py-4" style="background:white;color:#c45b1a;box-shadow:0 10px 30px rgba(255,255,255,0.2);" onmouseover="this.style.background='#fdf7f0'" onmouseout="this.style.background='white'">📞 Call 0723 302 658</a>
+      <a href="services.html" class="btn-outline-white text-base px-8 py-4">View Our Services →</a>
+    </div>
+    <p class="mt-6 text-xs uppercase tracking-widest" style="color:rgba(255,210,140,0.5);">📍 Gamagara District · Northern Cape, South Africa · Est. 2023</p>
+  </div>
+</section>
+
+
+<footer style="background:#1e1410; color:rgba(255,230,190,0.7); padding:2.5rem 2rem;">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="logo-mark" style="width:36px;height:36px;font-size:0.9rem;">MC</div>
+      <div>
+        <div class="text-sm font-semibold text-white" style="font-family:'Playfair Display',serif;">Magabe Capitao Enterprise</div>
+        <div class="text-xs" style="color:rgba(255,200,130,0.5);">Construction & Catering · Est. 2023</div>
+      </div>
+    </div>
+    <div class="text-xs" style="color:rgba(255,210,160,0.4);">
+      <em>"Your Partner in Construction Success"</em>
+    </div>
+    <div class="flex gap-4">
+      <a href="tel:0723302658" class="text-xs hover:text-white transition-colors" style="color:rgba(255,200,130,0.6);text-decoration:none;">📞 0723302658</a>
+      <a href="mailto:tuduetsoletsoalo05@gmail.com" class="text-xs hover:text-white transition-colors" style="color:rgba(255,200,130,0.6);text-decoration:none;">✉️ Email</a>
+      <a href="index.html" class="text-xs hover:text-white transition-colors" style="color:rgba(255,200,130,0.6);text-decoration:none;">← Home</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => menu.classList.toggle('open'));
+  function closeMenu() { menu.classList.remove('open'); }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function toggleChip(el) { el.classList.toggle('active'); }
+
+  let urgent = false;
+  function toggleUrgent() {
+    urgent = !urgent;
+    const dot = document.getElementById('urgent-dot');
+    const toggle = document.getElementById('urgent-toggle');
+    if (urgent) {
+      dot.style.background = '#c45b1a';
+      dot.innerHTML = '<span style="color:white;font-size:0.6rem;font-weight:700;">✓</span>';
+      toggle.style.background = 'rgba(196,91,26,0.1)';
+      toggle.style.borderColor = 'rgba(196,91,26,0.4)';
+    } else {
+      dot.style.background = 'transparent';
+      dot.innerHTML = '';
+      toggle.style.background = 'rgba(196,91,26,0.06)';
+      toggle.style.borderColor = 'rgba(196,91,26,0.15)';
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const text = document.getElementById('btn-text');
+    const success = document.getElementById('success-box');
+    const form = document.getElementById('contact-form');
+
+    text.textContent = '⏳ Sending...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      form.querySelectorAll('.space-y-5 > *:not(#success-box)').forEach(el => el.style.display = 'none');
+      success.style.display = 'block';
+      btn.style.display = 'none';
+    }, 1200);
+  }
+
+  function toggleFaq(btn) {
+    const body = btn.nextElementSibling;
+    const arrow = btn.querySelector('.faq-arrow');
+    const isOpen = body.style.display === 'block';
+    document.querySelectorAll('.faq-body').forEach(b => b.style.display = 'none');
+    document.querySelectorAll('.faq-arrow').forEach(a => { a.textContent = '+'; a.style.transform = 'rotate(0deg)'; });
+    if (!isOpen) {
+      body.style.display = 'block';
+      arrow.textContent = '−';
+    }
+  }
+</script>
+</body>
+</html>
