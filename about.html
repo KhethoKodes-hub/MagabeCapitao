@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us · Magabe Capitao Enterprise</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 (Free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -38,7 +40,7 @@
       min-height: 72vh;
       background:
         linear-gradient(160deg, rgba(20,12,8,0.72) 0%, rgba(100,60,20,0.55) 55%, rgba(196,91,26,0.4) 100%),
-        url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=85') center/cover no-repeat;
+        url('./assets/cleaning.png') center/cover no-repeat;
       display: flex; flex-direction: column; justify-content: flex-end;
       position: relative; overflow: hidden; padding-top: 5rem;
     }
@@ -105,6 +107,10 @@
     .value-card:hover .icon-wrap {
       background: linear-gradient(135deg, #c45b1a, #7c4f2a);
       border-color: transparent; transform: scale(1.12) rotate(-5deg);
+    }
+    /* Ensure icon colour inside hovered circle becomes white */
+    .value-card:hover .icon-wrap i {
+      color: white;
     }
 
     .stat-num {
@@ -206,10 +212,10 @@
 
     <div class="hidden md:flex items-center gap-7">
       <a href="index.html" class="text-sm font-medium text-stone-500 hover:text-orange-700 transition-colors">Home</a>
-      <a href="about.html"class="text-sm font-semibold" class="text-sm font-medium text-stone-500 hover:text-orange-700 transition-colors" style="color:#c45b1a; border-bottom:2px solid #c45b1a; padding-bottom:2px;">About</a>
+      <a href="about.html" class="text-sm font-medium text-stone-500 hover:text-orange-700 transition-colors" style="color:#c45b1a; border-bottom:2px solid #c45b1a; padding-bottom:2px;">About</a>
       <a href="services.html" class="text-sm font-medium text-stone-500 hover:text-orange-700 transition-colors">Services</a>
-      <span  class="text-sm font-medium text-stone-500 hover:text-orange-700 transition-colors">Contact</span>
-      <a href="tel:0723302658" class="btn-primary text-sm px-5 py-2">📞 Call Now</a>
+      <a href="contact.html" class="text-sm font-medium text-stone-500 hover:text-orange-700 transition-colors">Contact</a>
+      <a href="tel:0723302658" class="btn-primary text-sm px-5 py-2"><i class="fas fa-phone-alt mr-1"></i> Call Now</a>
     </div>
 
     <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
@@ -220,11 +226,11 @@
   </div>
 
   <div id="mobile-menu" class="md:hidden px-5 pb-5 pt-2 space-y-3">
-    <a href="index.html" class="block text-base font-medium text-stone-700 py-2 border-b border-stone-200" onclick="closeMenu">Home</a>
+    <a href="index.html" class="block text-base font-medium text-stone-700 py-2 border-b border-stone-200" onclick="closeMenu()">Home</a>
     <a href="about.html" class="block text-base font-medium text-stone-700 py-2 border-b border-stone-200" style="color:#c45b1a;">About</a>
     <a href="services.html" class="block text-base font-medium text-stone-700 py-2 border-b border-stone-200" onclick="closeMenu()">Services</a>
-    <span href="contact.html"class="block text-base font-semibold py-2 border-b border-stone-200" onclick="closeMenu()">Contact</span>
-    <a href="tel:0723302658" class="btn-primary text-sm justify-center mt-2">📞 0723 302 658</a>
+    <a href="contact.html" class="block text-base font-medium text-stone-700 py-2 border-b border-stone-200" onclick="closeMenu()">Contact</a>
+    <a href="tel:0723302658" class="btn-primary text-sm justify-center mt-2"><i class="fas fa-phone-alt mr-1"></i> 0723 302 658</a>
   </div>
 </nav>
 
@@ -247,21 +253,21 @@
 
     <div class="flex flex-wrap gap-4">
       <div class="glass px-6 py-4 flex items-center gap-3">
-        <span style="font-size:1.6rem;">🏗️</span>
+        <span style="font-size:1.6rem;"><i class="fas fa-hard-hat"></i></span>
         <div>
           <div class="stat-num" style="font-size:1.8rem;">2023</div>
           <div class="text-xs uppercase tracking-widest" style="color:rgba(255,215,150,0.75);">Founded</div>
         </div>
       </div>
       <div class="glass px-6 py-4 flex items-center gap-3">
-        <span style="font-size:1.6rem;">📍</span>
+        <span style="font-size:1.6rem;"><i class="fas fa-map-marker-alt"></i></span>
         <div>
           <div class="font-bold text-white text-base" style="font-family:'Playfair Display',serif;">Gamagara</div>
           <div class="text-xs uppercase tracking-widest" style="color:rgba(255,215,150,0.75);">District</div>
         </div>
       </div>
       <div class="glass px-6 py-4 flex items-center gap-3">
-        <span style="font-size:1.6rem;">⭐</span>
+        <span style="font-size:1.6rem;"><i class="fas fa-star"></i></span>
         <div>
           <div class="font-bold text-white text-base" style="font-family:'Playfair Display',serif;">5-Star</div>
           <div class="text-xs uppercase tracking-widest" style="color:rgba(255,215,150,0.75);">Rated</div>
@@ -290,13 +296,13 @@
             </div>
           </div>
           <div style="background:linear-gradient(90deg,#2f1d0e,#7c4f2a); padding:1rem 1.5rem; display:flex; align-items:center; gap:0.75rem;">
-            <span style="font-size:1.1rem;">📍</span>
+            <span style="font-size:1.1rem;"><i class="fas fa-map-marker-alt"></i></span>
             <span class="text-sm font-medium text-white">Gamagara District, Northern Cape</span>
           </div>
         </div>
 
         <div class="card mt-4 p-5 flex items-center gap-4">
-          <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#c45b1a22,#7c4f2a22);border:1px solid rgba(196,91,26,0.25);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">🤝</div>
+          <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#c45b1a22,#7c4f2a22);border:1px solid rgba(196,91,26,0.25);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;"><i class="fas fa-handshake"></i></div>
           <div>
             <div class="font-semibold" style="font-family:'Playfair Display',serif; color:#2f1d0e;">Community First</div>
             <div class="text-sm" style="color:#7a5438;">Every project, big or small, is treated with equal dedication.</div>
@@ -305,7 +311,7 @@
       </div>
 
       <div class="flex-1 fade-up delay-2">
-        <span class="text-xs font-semibold uppercase tracking-widest block mb-4" style="color:#c45b1a;">📜 Our Story</span>
+        <span class="text-xs font-semibold uppercase tracking-widest block mb-4" style="color:#c45b1a;"><i class="fas fa-scroll mr-1"></i> Our Story</span>
         <h2 class="mb-5 leading-tight" style="font-size:clamp(1.9rem,4vw,3rem); color:#2f1d0e; font-family:'Playfair Display',serif;">
           A Promise Made<br>in <em>Gamagara, 2023</em>
         </h2>
@@ -336,7 +342,7 @@
 <section class="py-20" style="background:linear-gradient(160deg,#f2e4d0,#fdf7f0);">
   <div class="max-w-4xl mx-auto px-5 md:px-8">
     <div class="text-center mb-14 fade-up">
-      <span class="text-xs font-semibold uppercase tracking-widest block mb-3" style="color:#c45b1a;">⏳ Our Journey</span>
+      <span class="text-xs font-semibold uppercase tracking-widest block mb-3" style="color:#c45b1a;"><i class="fas fa-hourglass-half mr-1"></i> Our Journey</span>
       <h2 style="font-size:clamp(1.8rem,4vw,2.8rem); color:#2f1d0e; font-family:'Playfair Display',serif;">How We Got Here</h2>
     </div>
 
@@ -384,29 +390,29 @@
 <section class="py-24" style="background:linear-gradient(155deg,#fdf7f0,#f2e4d0);">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <div class="text-center mb-14 fade-up">
-      <span class="text-xs font-semibold uppercase tracking-widest block mb-3" style="color:#c45b1a;">💡 What Drives Us</span>
+      <span class="text-xs font-semibold uppercase tracking-widest block mb-3" style="color:#c45b1a;"><i class="fas fa-lightbulb mr-1"></i> What Drives Us</span>
       <h2 style="font-size:clamp(1.8rem,4vw,2.8rem); color:#2f1d0e; font-family:'Playfair Display',serif;">Our Core <em>Values</em></h2>
       <p class="mt-3 text-base max-w-lg mx-auto" style="color:#7a5438; line-height:1.7; font-weight:300;">These aren't slogans on a wall — they're the standards we hold ourselves to on every single job.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
       <div class="value-card fade-up delay-1">
-        <div class="icon-wrap">⚡</div>
+        <div class="icon-wrap"><i class="fas fa-bolt"></i></div>
         <h3 class="font-bold text-lg mb-2" style="font-family:'Playfair Display',serif; color:#2f1d0e;">Reliable & Fast</h3>
         <p class="text-sm leading-relaxed" style="color:#7a5438;">On time, every time. We respect your schedule and never make excuses — only results.</p>
       </div>
       <div class="value-card fade-up delay-2">
-        <div class="icon-wrap">🤝</div>
+        <div class="icon-wrap"><i class="fas fa-handshake"></i></div>
         <h3 class="font-bold text-lg mb-2" style="font-family:'Playfair Display',serif; color:#2f1d0e;">Community Trusted</h3>
         <p class="text-sm leading-relaxed" style="color:#7a5438;">Trusted by homeowners and businesses across the Gamagara District for quality and honesty.</p>
       </div>
       <div class="value-card fade-up delay-3">
-        <div class="icon-wrap">⚖️</div>
+        <div class="icon-wrap"><i class="fas fa-scale-balanced"></i></div>
         <h3 class="font-bold text-lg mb-2" style="font-family:'Playfair Display',serif; color:#2f1d0e;">Work-Life Balance</h3>
         <p class="text-sm leading-relaxed" style="color:#7a5438;">A happy, respected team produces better work. We build sustainable people, not just structures.</p>
       </div>
       <div class="value-card fade-up delay-4">
-        <div class="icon-wrap">🎯</div>
+        <div class="icon-wrap"><i class="fas fa-bullseye"></i></div>
         <h3 class="font-bold text-lg mb-2" style="font-family:'Playfair Display',serif; color:#2f1d0e;">Purpose-Driven</h3>
         <p class="text-sm leading-relaxed" style="color:#7a5438;">Every project carries meaning. We build more than structures — we build legacies and livelihoods.</p>
       </div>
@@ -415,23 +421,23 @@
 </section>
 
 
-<section class="py-24" style="background:linear-gradient(175deg,rgba(253,247,240,0.97) 0%,rgba(232,213,191,0.9) 100%); background-image:url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1400&q=50'); background-size:cover; background-attachment:fixed; background-blend-mode:multiply;">
+<section class="py-24" style="background:linear-gradient(175deg,rgba(253,247,240,0.97) 0%,rgba(232,213,191,0.9) 100%); background-image:url('./assets/clean.png'); background-size:cover; background-attachment:fixed; background-blend-mode:multiply;">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 fade-up">
       <div>
-        <span class="text-xs font-semibold uppercase tracking-widest block mb-3" style="color:#c45b1a;">🔨 What We Do</span>
+        <span class="text-xs font-semibold uppercase tracking-widest block mb-3" style="color:#c45b1a;"><i class="fas fa-wrench mr-1"></i> What We Do</span>
         <h2 style="font-size:clamp(1.8rem,4vw,2.8rem); color:#2f1d0e; font-family:'Playfair Display',serif;">Our Full <em>Service Range</em></h2>
       </div>
-      <a href="index.html#services" class="btn-ghost">View All Services →</a>
+      <a href="index.html#services" class="btn-ghost"><i class="fas fa-arrow-right mr-1"></i> View All Services</a>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 fade-up delay-2">
-      <div class="service-pill">🛣️ Road And Pavements</div>
-      <div class="service-pill">🔨 Renovation</div>
-      <div class="service-pill">⛲ Fences</div>
-      <div class="service-pill">🧱 Plastering & Maintenance</div>
-      <div class="service-pill">🍽️ Catering Services</div>
-      <div class="service-pill">🧼 Cleaning Services</div>
+      <div class="service-pill"><i class="fas fa-road mr-2"></i> Road And Pavements</div>
+      <div class="service-pill"><i class="fas fa-hammer mr-2"></i> Renovation</div>
+      <div class="service-pill"><i class="fas fa-border-all mr-2"></i> Fences</div>
+      <div class="service-pill"><i class="fas fa-paint-roller mr-2"></i> Plastering & Maintenance</div>
+      <div class="service-pill"><i class="fas fa-utensils mr-2"></i> Catering Services</div>
+      <div class="service-pill"><i class="fas fa-broom mr-2"></i> Cleaning Services</div>
     </div>
   </div>
 </section>
@@ -442,7 +448,7 @@
   <div style="position:absolute;bottom:-80px;right:-40px;width:260px;height:260px;border-radius:50%;background:rgba(255,200,100,0.05);pointer-events:none;"></div>
 
   <div class="max-w-3xl mx-auto px-5 md:px-8 text-center relative z-10 fade-up">
-    <span style="font-size:2.5rem; display:block; margin-bottom:1rem;">⚒️</span>
+    <span style="font-size:2.5rem; display:block; margin-bottom:1rem;"><i class="fas fa-hard-hat"></i></span>
     <h2 class="text-white mb-4" style="font-size:clamp(1.8rem,4vw,2.8rem); font-family:'Playfair Display',serif;">
       Ready to Work Together?
     </h2>
@@ -450,10 +456,10 @@
       Whether it's a road, a renovation, or a catered event — we're one call away. Let's make your vision real.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="tel:0723302658" class="btn-primary text-base px-8 py-4" style="background:white;color:#c45b1a;box-shadow:0 10px 30px rgba(255,255,255,0.2);" onmouseover="this.style.background='#fdf7f0'" onmouseout="this.style.background='white'">📞 0723 302 658</a>
-      <a href="mailto:tuduetsoletsoalo05@gmail.com" class="btn-ghost text-base px-8 py-4" style="color:white;border-color:rgba(255,230,180,0.5);" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">✉️ tuduetsoletsoalo05@gmail.com</a>
+      <a href="tel:0723302658" class="btn-primary text-base px-8 py-4" style="background:white;color:#c45b1a;box-shadow:0 10px 30px rgba(255,255,255,0.2);" onmouseover="this.style.background='#fdf7f0'" onmouseout="this.style.background='white'"><i class="fas fa-phone-alt mr-2"></i> 0723 302 658</a>
+      <a href="mailto:tuduetsoletsoalo05@gmail.com" class="btn-ghost text-base px-8 py-4" style="color:white;border-color:rgba(255,230,180,0.5);" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'"><i class="fas fa-envelope mr-2"></i> tuduetsoletsoalo05@gmail.com</a>
     </div>
-    <p class="mt-6 text-xs uppercase tracking-widest" style="color:rgba(255,210,140,0.5);">📍 Gamagara District · Northern Cape, South Africa</p>
+    <p class="mt-6 text-xs uppercase tracking-widest" style="color:rgba(255,210,140,0.5);"><i class="fas fa-map-pin mr-1"></i> Gamagara District · Northern Cape, South Africa</p>
   </div>
 </section>
 
@@ -471,9 +477,9 @@
       <em>"Your Partner in Construction Success"</em>
     </div>
     <div class="flex gap-4">
-      <a href="tel:0723302658" class="text-xs hover:text-white transition-colors" style="color:rgba(255,200,130,0.6); text-decoration:none;">📞 0723302658</a>
-      <a href="mailto:tuduetsoletsoalo05@gmail.com" class="text-xs hover:text-white transition-colors" style="color:rgba(255,200,130,0.6); text-decoration:none;">✉️ Email</a>
-      <a href="index.html" class="text-xs hover:text-white transition-colors" style="color:rgba(255,200,130,0.6); text-decoration:none;">← Home</a>
+      <a href="tel:0723302658" class="text-xs hover:text-white transition-colors" style="color:rgba(255,200,130,0.6); text-decoration:none;"><i class="fas fa-phone-alt mr-1"></i> 0723302658</a>
+      <a href="mailto:tuduetsoletsoalo05@gmail.com" class="text-xs hover:text-white transition-colors" style="color:rgba(255,200,130,0.6); text-decoration:none;"><i class="fas fa-envelope mr-1"></i> Email</a>
+      <a href="index.html" class="text-xs hover:text-white transition-colors" style="color:rgba(255,200,130,0.6); text-decoration:none;"><i class="fas fa-home mr-1"></i> Home</a>
     </div>
   </div>
 </footer>
